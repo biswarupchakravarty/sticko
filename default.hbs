@@ -31,10 +31,10 @@
 </head>
 <body class="{{body_class}}">
 <div id="main-content" role="main" class="pure-g-r">
-    <aside id="main-sidebar" class="pure-u-1-2" style="background-image:url({{@blog.cover}})">
+    <aside id="main-sidebar" class="pure-u-1-2" style="background-image:url({{@blog.cover}}); width: 30%;">
         {{> aside}}
     </aside>
-    <section id="main" class="pure-u-1-2">
+    <section id="main" class="pure-u-1-2" style="width: 70%; margin-left: 30%;">
         {{{body}}}
     </section>
 </div>
