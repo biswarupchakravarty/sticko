@@ -22,8 +22,13 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 .logo { font-size: 2.375em }
 aside#main-sidebar { width: 25% }
 section#main { width: 75%; margin-left: 25%; box-shadow: -1px 0 4px 4px rgba(50, 50, 50, 0.8); }
+#main-sidebar:before { background-color: rgb(148, 18, 18); }
+h1, h2, h3, h4, h5 { color: rgb(148, 18, 18); }
+blockquote:before { color: #d5d5d5;}
+/*
 #main-sidebar > section.sidebar-data-holder:after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); transition: 0.5s; }
 #main-sidebar > section.sidebar-data-holder:hover:after { opacity: 0; z-index: -1; transition: 0.5s; }
+*/
 
 @font-face {
   font-family: 'Lato';
