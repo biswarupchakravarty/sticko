@@ -20,7 +20,7 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 body, .pure-g [class*="pure-u"], .pure-g-r [class*="pure-u"] {
     font-family: "Open Sans";
 }
-.logo { font-family: "Lato"; }
+.logo { font-family: "Lato"; font-size: 2.375em; }
 aside#main-sidebar {  width: 25%; }
 section#main { width: 75%; margin-left: 25%;box-shadow: -1px 0 4px 4px rgba(50, 50, 50, 0.8); }
 #main-sidebar > section.sidebar-data-holder:after {
