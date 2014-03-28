@@ -12,8 +12,9 @@
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{! Styles'n'Scripts }}
+    {{! Styles'n'Scripts'n'Fonts }}
     <link rel="stylesheet" href="{{asset "/css/style.css"}}">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
     {{! Touch icons and favicon }}
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset "/images/apple-touch-icon-144x144-precomposed.png"}}" />
@@ -31,10 +32,10 @@
 </head>
 <body class="{{body_class}}">
 <div id="main-content" role="main" class="pure-g-r">
-    <aside id="main-sidebar" class="pure-u-1-2" style="background-image:url({{@blog.cover}}); width: 30%;">
+    <aside id="main-sidebar" class="pure-u-1-2" style="background-image:url({{@blog.cover}});">
         {{> aside}}
     </aside>
-    <section id="main" class="pure-u-1-2" style="width: 70%; margin-left: 30%;">
+    <section id="main" class="pure-u-1-2">
         {{{body}}}
     </section>
 </div>
@@ -45,9 +46,32 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="{{asset "/js/combined.js"}}"></script>
-<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    $(window).load(function () {
+        setTimeout(function () {
+            $('img[data-src]').each(function () {
+                $(this).attr('src', $(this).data().src).on('load', function () {
+                    return
+                    $(this).css('opacity', 0).animate({
+                        opacity: 1
+                    }, 200);
+                })
+            });
+        }, 10);
+    });
+</script>
 {{#if post}}
-    <script async type="text/javascript" src="//apis.google.com/js/plusone.js?callback=gpcb"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        setTimeout(function () {
+            var script = document.createElement('script');
+            script.src = '//apis.google.com/js/plusone.js?callback=gpcb';
+            document.body.appendChild(script);
+        }, 10);
+    });
+</script>
 {{/if}}
+
 </body>
 </html>
