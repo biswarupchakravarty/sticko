@@ -63,7 +63,17 @@
 </script>
 {{#if post}}
 <script type="text/javascript">
+    var attachDisqus = function () {
+        var e = document.createElement("script");
+        e.type = "text/javascript";
+        e.async = true;
+        e.src = "//shinycoin.disqus.com/embed.js";
+        (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(e)
+    };
+
     $(window).load(function () {
+        setTimeout(attachDisqus, 1000);
+        return
         setTimeout(function () {
             var script = document.createElement('script');
             script.src = '//apis.google.com/js/plusone.js?callback=gpcb';
@@ -72,6 +82,5 @@
     });
 </script>
 {{/if}}
-
 </body>
 </html>
