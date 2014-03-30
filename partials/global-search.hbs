@@ -1,0 +1,48 @@
+<div class="search-container">
+  <input type="text" class="fa fa-search global-search" placeholder="&#xF002; Search" />
+  <span class="fa fa-times global-search-cancel">&nbsp;</span>
+  <div class="results-container">
+    <ul></ul>
+  </div>
+</div>
+
+<script type="unknown/x-template" id="tmplSearchResult">
+  <%#hits%>
+    <%#hits%>
+      <li>
+        <a href="/<%fields.slug%>?ref=global-search">
+          <h4 class="search-result-heading">
+            <%#highlight.title%><%{highlight.title}%><%/highlight.title%>
+            <%^highlight.title%><%fields.title%><%/highlight.title%>
+          </h4>
+          <%#this_section_disabled%>
+          <%#highlight.content%>
+            <p class="search-result-text"><%{.}%></p>
+          <%/highlight.content%>
+          <%/this_section_disabled%>
+          <%#highlight.content.length%>
+            <small><p>(and <%highlight.content.length%> other occurences in post)</p></small>
+          <%/highlight.content.length%>
+        </a>
+      </li>
+    <%/hits%>
+    <%^hits%>
+      <li>
+        <h4 class="search-result-heading">
+            No Results Found!
+        </h4>
+      </li>
+    <%/hits%>
+  <%/hits%>
+  
+  <!--<%#suggest%>
+    <li><p class="global-search-suggestions">Did you mean: 
+      <%#suggestions%>
+        <%#options%>
+          <%text%>, 
+        <%/options%>
+      <%/suggestions%>
+    </p></li>
+  <%/suggest%>-->
+  
+</script>

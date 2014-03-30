@@ -17,19 +17,141 @@ https://github.com/yui/pure/blob/master/LICENSE.md
 .hljs{display:block;padding:.5em;background:#23241f}.css .hljs-function .hljs-preprocessor,.css .hljs-rules,.css .hljs-value,.hljs,.hljs-pragma,.hljs-tag{color:#f8f8f2}.hljs-emphasis,.hljs-strong,.hljs-strongemphasis{color:#a8a8a2}.alias .hljs-keyword,.hljs-blockquote,.hljs-bullet,.hljs-hexcolor,.hljs-horizontal_rule,.hljs-literal,.hljs-number,.hljs-regexp{color:#ae81ff}.css .hljs-class,.hljs-class .hljs-title:last-child,.hljs-code,.hljs-tag .hljs-value,.hljs-title{color:#a6e22e}.hljs-link_url{font-size:80%}.hljs-strong,.hljs-strongemphasis{font-weight:700}.hljs-class .hljs-title:last-child,.hljs-emphasis,.hljs-strongemphasis{font-style:italic}.alias .hljs-keyword:first-child,.clojure .hljs-built_in,.css .hljs-important,.css .hljs-tag,.css .unit,.hljs-attribute,.hljs-change,.hljs-flow,.hljs-function,.hljs-header,.hljs-keyword,.hljs-symbol,.hljs-symbol .hljs-string,.hljs-tag .hljs-title,.hljs-value,.hljs-winutils,.lisp .hljs-title,.nginx .hljs-title,.tex .hljs-special{color:#F92672}.css .hljs-attribute,.hljs-class .hljs-keyword:first-child,.hljs-constant,.hljs-function .hljs-keyword{color:#66d9ef}.hljs-class .hljs-title,.hljs-params,.hljs-variable{color:#f8f8f2}.apache .hljs-cbracket,.apache .hljs-tag,.css .hljs-id,.django .hljs-filter .hljs-argument,.django .hljs-template_tag,.django .hljs-variable,.haskell .hljs-type,.hljs-addition,.hljs-attr_selector,.hljs-built_in,.hljs-envvar,.hljs-link_label,.hljs-link_url,.hljs-prompt,.hljs-pseudo,.hljs-stream,.hljs-string,.hljs-subst,.ruby .hljs-class .hljs-parent,.smalltalk .hljs-array,.smalltalk .hljs-class,.smalltalk .hljs-localvars,.sql .hljs-aggregate,.tex .hljs-command{color:#e6db74}.apache .hljs-sqbracket,.hljs-comment,.hljs-deletion,.hljs-doctype,.hljs-javadoc,.hljs-pi,.hljs-shebang,.hljs-template_comment,.java .hljs-annotation,.python .hljs-decorator,.tex .hljs-formula{color:#75715e}.coffeescript .javascript,.javascript .xml,.php .xml,.tex .hljs-formula,.xml .css,.xml .hljs-cdata,.xml .javascript,.xml .php,.xml .vbscript{opacity:.5}
 
 /* Overrides */
-p, h1, h2, h3, h4, h5, li, ul, ol, em, b, i { font-family: "Lato" }
+p, h1, h2, h3, h4, h5, li, ul, ol, em, b, i, input[type=text] { font-family: "Lato" }
 [class^="icon-"] { font-family: "icon-font" }
 .logo { font-family: "Lato"; font-size: 2.375em }
 aside#main-sidebar { width: 25% }
-section#main { width: 75%; margin-left: 25%; box-shadow: -1px 0 4px 4px rgba(50, 50, 50, 0.8); }
+section#main { width: 75%; margin-left: 25%; }
+@media screen and (max-width: 1023px) {
+  section#main {
+    padding: 0 1.75em 1.75em;
+    margin-left: 0;
+  }
+}
 #main-sidebar:before { background-color: rgb(148, 18, 18); }
-h1, h2, h3, h4, h5 { color: rgb(148, 18, 18); }
+h1, h2, h3, h4, h5, #main h1 a { color: rgb(148, 18, 18); }
 blockquote:before { color: #d5d5d5;}
 /*
 #main-sidebar > section.sidebar-data-holder:after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); transition: 0.5s; }
 #main-sidebar > section.sidebar-data-holder:hover:after { opacity: 0; z-index: -1; transition: 0.5s; }
 */
 
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
+  background-color: #ddd;
+}
+input[type=text]:focus, textarea:focus {
+  /*box-shadow: 0 0 5px rgba(255, 255, 0, 1);
+  border: 1px solid rgba(255, 255, 0, 1);*/
+  background-color: #fff;
+}
+
+.search-container {
+  padding: 20px 4%;
+  position: relative;
+}
+
+input.global-search {
+  width: 90%;
+  font-size: 16px;
+  padding: 9px;
+  border-radius: 4px;
+  font-family: FontAwesome;
+}
+
+.results-container {
+  1display: none;
+  transition: 2s;
+  width: 90%;
+  font-size: 12px;
+  max-height: 600px;
+  overflow: auto;
+  border: 1px solid;
+  margin: 0 auto;
+  margin-top: -5px;
+  background: #eee;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.global-search:focus + .results-container {
+  display: block;
+}
+
+.search-container .global-search-cancel {
+  position: absolute;
+  right: 11%;
+  top: 30px;
+  cursor: pointer;
+  color: #999;
+  opacity: 0;
+  transition: 0.1s;
+}
+
+.global-search:focus + .global-search-cancel {
+  opacity: 1;
+  transition: 0.1s;
+}
+
+.global-search-cancel:hover { color: #333; }
+
+.results-container ul { padding: 0; margin: 0; }
+.results-container ul li {
+  list-style-type: none;
+  display: block;
+  padding: 3px 18px;
+  margin: 0;
+  text-align: left;
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #999;
+  min-height: 45px;
+}
+.results-container ul li p {
+  line-height: 100%;
+  padding: 0;
+}
+.results-container ul li:hover {
+   background-color: #d5d5d5;
+}
+.results-container ul li:first-child {
+  padding-top: 10px;
+  border-top: none;
+}
+.results-container ul li:last-child {
+  border-bottom: none;
+}
+.results-container ul li a {
+  border: none;
+  display: block;
+  color: #333;
+}
+.results-container .search-result-heading {
+  margin: 7.5px 0;
+  width: 95%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.results-container .search-result-text {
+  line-height: 150%;
+}
+.results-container em {
+  color: #dd0017;
+  text-decoration: underline;
+  margin-right: 3px;
+}
+.global-search-suggestions {
+  color: #666;
+  font-style: italic;
+}
 @font-face {
   font-family: 'Lato';
   font-style: normal;
