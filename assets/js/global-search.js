@@ -45,16 +45,14 @@ $(function () {
             return;
         }
         $.ajax({
-            url: 'http://127.0.0.1:9200/posts/_search',
+            url: '/search/',
             data: JSON.stringify(getRequest(q)),
             type: "POST",
             contentType: 'application/json',
             success: function (resp) {
+                if (typeof resp == "string") resp = JSON.parse(resp);
                 $list.html(Mustache.render(tmpl, resp));
-                console.log(resp.suggest.suggestions);
             }
         });
-    }).focus(function () {
-
-    });
+    })
 });
