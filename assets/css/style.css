@@ -37,6 +37,19 @@ blockquote:before { color: #d5d5d5;}
 #main-sidebar > section.sidebar-data-holder:hover:after { opacity: 0; z-index: -1; transition: 0.5s; }
 */
 
+code {
+  font-family: monospace,serif;
+  _font-family: 'courier new',monospace;
+  font-size: 1em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  line-height: 160%;
+  padding: 0px 4px;
+  margin: 0 4px;
+  background: #ddd;
+}
+
 input[type=text], textarea {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
