@@ -1,11 +1,13 @@
 // Load Highlight.js Syntax Highlighting
 hljs.initHighlightingOnLoad();
+
+// lazy load the images
 $(window).load(function () {
     setTimeout(function () {
         $('img[data-src]').each(function () {
             $(this).attr('src', $(this).data().src);
         });
-    }, 0);
+    }, 100);
 });
 
 // Load Google Analytics
@@ -45,4 +47,31 @@ $(window).load(function () {
         script.src = '//apis.google.com/js/plusone.js?callback=gpcb';
         document.body.appendChild(script);
     }, 10);
+});
+
+// timeago
+$(window).load(function () {
+    $(function () {
+        $('.timeago').timeago();
+    });
+});
+
+// search results page handling
+$(window).load(function () {
+    $('.search-result-content').each(function () {
+      var content = $(this).html();
+      content = content.replace(/\&lt;em\&gt;/gi, '<em>').replace(/\&lt;\/em\&gt;/gi, '</em>');
+      $(this).html(content);
+    });
+
+    $('.suggested-word a').click(function () {
+      var q = $(this).text();
+      $('<form>')
+        .append($('<input>').attr('name', 'q').attr('type', 'text').attr('value', q))
+        .css('display', 'none')
+        .attr('method', 'post')
+        .attr('action', '/search_results/')
+        .appendTo($('body'))
+        .get(0).submit();
+    });
 });

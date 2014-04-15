@@ -1,1 +1,1 @@
-uglifyjs assets/js/plugins/highlight.pack.js assets/js/plugins/mustache.js assets/js/plugins/jquery.fitvids.js assets/js/script.js assets/js/initialize.js assets/js/global-search.js > assets/js/combined.js 
+uglifyjs assets/js/plugins/highlight.pack.js assets/js/plugins/timeago.js assets/js/plugins/mustache.js assets/js/plugins/jquery.fitvids.js assets/js/script.js assets/js/initialize.js > assets/js/combined.js 
